@@ -456,12 +456,12 @@ input[type="checkbox"] {
     }
 }
 
-/* Laptops/Monitores */
+/* Laptops/Monitores/Chicos */
 @media (min-width: 1024px) {
 
     .card {
         width: 30%;
-        height: 70%;
+        height: 90%;
         background: #ffffff;
         transform-style: preserve-3d;
         transform: perspective(1000px);
@@ -484,20 +484,27 @@ input[type="checkbox"] {
     }
 
     #decoration img:last-child {
-        width: 45%;
-        bottom: 7%;
-        height: 70%;
+        width: 50%;
+        bottom: 3%;
+        height: 65%;
         left: 63%;
     }
 
     #decoration h1 {
-        top: 20%;
+        top: 22%;
         width: 90%;
-        font-size: 2.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 5%;
     }
 
+
     #info div button {
-        font-size: 1.3rem;
+        font-size: 0.75rem;
+    }
+
+    #info div span {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
 }
