@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="styles.css">
+    <title>Ivy Amelí 2025</title>
+</head>
+
+<body>
+    <div class="fireworks"></div>
+    <aside class="card">
+        <div class="front__cover">
+            <div class="central__figure">
+                <img src="assets/abejita.png"
+                     alt="Figura personalizada">
+            </div>
+            <div class="front__box">
+                <span id="name">Ivy Amelí</span>
+                <span id="date">18/ene/2025</span>
+            </div>
+        </div>
+
+        <div class="content__wrapper">
+            <div class="content__cover">
+                <div id="loader">
+                    <span></span>
+                </div>
+                <!-- Contenedor del texto -->
+                <div class="content__box">
+                    <div id="invitation__box">
+                        <div id="decoration">
+                            <img src="assets/flags.png" />
+                            <h1>¡Te invito a celebrar mi cumpleaños!</h1>
+                            <img src="assets/iwy.png" />
+                        </div>
+                        <div id="info">
+                            <div>
+                                <span>
+                                    📍
+                                </span>
+                                <button onclick="window.open('https://maps.app.goo.gl/kEzyPejWZXuai1EQ7', '_blank');"
+                                        class="rainbow">
+                                    Ver ubicación
+                                </button>
+                            </div>
+                            <div>
+                                <span>
+                                    ☝️
+                                </span>
+                                <button id="confirmationButton"
+                                        class="rainbow">
+                                    Confirmar invitación
+                                </button>
+                            </div>
+                            <div>
+                                <span>
+                                    🎁
+                                </span>
+                                <button onclick="window.open('https://www.amazon.com.mx/hz/wishlist/ls/16KDNSEJ9NNV7?ref_=wl_share', '_blank');"
+                                        class="rainbow">
+                                    Lista de deseos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="confirmation__box"
+                         style="display: none;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card__curl"></div>
+    </aside>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+    <!-- jsDelivr  -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <!-- UNPKG -->
+    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
+    <script>
+        const container = document.querySelector('.fireworks')
+
+        container.style.position = 'fixed';
+        container.style.top = 0;
+        container.style.left = 0;
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.pointerEvents = 'none';
+        container.style.zIndex = '9999';
+
+        const options = {
+            acceleration: 1,
+            delay: { min: 60, max: 120 },
+            colors: ['#ff69b4', '#ffb6c1', '#ffff00', '#7fff00', '#00ffff', '#1e90ff', '#ff1493']
+        }
+
+        const fireworks = new Fireworks.default(container, options)
+
+        fireworks.start()
+    </script>
+</body>
+
+</html>

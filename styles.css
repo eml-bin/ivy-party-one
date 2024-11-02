@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
+
+/* Root */
+
+*,
+*:before,
+*:after {
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    outline: 0.063em solid rgba(0, 0, 0, 0);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-family: "Sniglet", system-ui;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    font-weight: 400;
+    font-style: normal;
+    background: repeating-linear-gradient(45deg, rgba(255, 196, 0, 0.15), rgba(255, 166, 0, 0.15) 6px, #ffffff 6px, #ffffff 30px);
+    overflow-y: none;
+}
+
+button {
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 -1px 2px rgba(0, 0, 0, 0.2);
+    background: rgba(67, 67, 67, 1);
+    border: 1px solid rgba(0, 0, 0, .35);
+    border-radius: 3.125rem;
+    transition: all 150ms linear 0s;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-bottom: 3px solid rgba(0, 0, 0, .55);
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+button.rainbow {
+    background: linear-gradient(45deg,
+            rgba(158, 209, 16, 1),
+            rgba(80, 181, 23, 1),
+            rgba(23, 144, 103, 1),
+            rgba(71, 110, 175, 1),
+            rgba(159, 73, 172, 1),
+            rgba(204, 66, 162, 1),
+            rgba(255, 59, 167, 1),
+            rgba(255, 88, 0, 1),
+            rgba(255, 129, 0, 1),
+            rgba(254, 172, 0, 1),
+            rgba(255, 204, 0, 1),
+            rgba(237, 230, 4, 1));
+
+    background-repeat: no-repeat;
+    background-size: 110% 120%;
+    background-position: center center;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #ffcccb;
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.5);
+}
+
+
+/* Card */
+
+.card {
+    position: relative;
+    width: 80%;
+    height: 70%;
+    background: #ffffff;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.25);
+    transition: 1s;
+    border-radius: 15px;
+}
+
+.front__cover {
+    position: absolute;
+    padding: 1rem 0 1rem 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(172, 252, 254, 1);
+    background-image: url('assets/wall.png');
+    background-size: cover;
+    background-position: center;
+    transform-origin: left;
+    z-index: 2;
+    transition: 1s;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.central__figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 185px;
+    height: 185px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.central__figure img {
+    width: 100%;
+    height: 100%;
+}
+
+.front__box {
+    background-color: rgba(255, 220, 220, 0.9);
+    border: dashed 1px #EA65A4;
+    border-radius: 10px;
+    width: 90%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    text-align: center;
+}
+
+.card__curl {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background:
+        linear-gradient(135deg,
+            #fff,
+            #f3f3f3 45%,
+            #ddd 50%,
+            #aaa 50%,
+            #bbb 56%,
+            #ccc 62%,
+            #f3f3f3 80%,
+            #fff 100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    transition: all .5s ease;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.card__curl:hover {
+    width: 30px;
+    height: 30px;
+}
+
+.card.open .front__cover {
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+
+.content__cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(172, 252, 254, 1);
+    background-image: url('assets/wall.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    backface-visibility: hidden;
+    transition: 1s;
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+.card.open .content__cover {
+    transform: rotateY(0deg);
+    visibility: visible;
+    z-index: 2;
+}
+
+.card.open .content__box {
+    background-color: rgba(255, 247, 219, 0.95);
+    visibility: visible;
+    transition: visibility 0s 0s;
+}
+
+.content__box {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    visibility: hidden;
+    transition: visibility 0s 1s;
+    background-color: rgba(255, 247, 219, 0.95);
+}
+
+.rainbow-text {
+    font-family: "Handlee", cursive;
+    font-weight: bold;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg,
+            #ff69b4, #ffb6c1, #ffff00, #7fff00, #00ffff, #1e90ff, #ff1493,
+            #1e90ff, #00ffff, #7fff00, #ffff00, #ffb6c1, #ff69b4);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300%;
+    animation: rainbow 3s linear infinite;
+}
+
+/* IDs */
+
+#invitation__box {
+    display: grid;
+    grid-template-rows: 80% 20%;
+    height: 100%;
+}
+
+#loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: rainbow-loader 5s linear infinite;
+}
+
+#loader span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 8px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.45);
+    border-right-color: rgba(0, 0, 0, 0.45);
+    border-bottom-color: rgba(0, 0, 0, 0.45);
+    animation: spin 1s linear infinite;
+}
+
+#name {
+    font-size: 3rem;
+    font-family: "Handlee", cursive;
+    color: rgba(111, 182, 129, 1);
+    text-shadow: 2px 2px 1px black;
+}
+
+#date {
+    color: rgba(255, 88, 144, 1);
+    letter-spacing: 1.5px;
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+}
+
+#decoration {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#decoration * {
+    position: absolute;
+}
+
+#decoration img:first-child {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    top: -20px;
+    object-fit: fill;
+}
+
+#decoration img:last-child {
+    left: 65%;
+    bottom: 5%;
+    transform: translateX(-70%);
+    width: 70%;
+    height: 59%;
+}
+
+#decoration h1 {
+    top: 25%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.75rem;
+    font-family: "Handlee", cursive;
+    font-weight: bold;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(90deg,
+            #ff69b4, #ffb6c1, #ffff00, #7fff00, #00ffff, #1e90ff, #ff1493,
+            #1e90ff, #00ffff, #7fff00, #ffff00, #ffb6c1, #ff69b4);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300%;
+    animation: rainbow 6s linear infinite;
+}
+
+#info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 0 10px 0 5px;
+    align-items: start;
+}
+
+#info div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#info div span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#info div button {
+    align-items: center;
+    justify-content: center;
+}
+
+#confirmation__box span {
+    display: block;
+    font-size: 3rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+#confirmation__box p {
+    color: #a9a9a9;
+    font-size: 0.95rem;
+    padding: 10px;
+    padding-top: 0;
+    margin-top: 0;
+    text-align: center;
+}
+
+#confirmation__box button {
+    display: block;
+    margin: 25px auto;
+}
+
+/* Animaciones */
+
+@keyframes rainbow {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 100%;
+    }
+}
+
+@keyframes rainbow-loader {
+    0% {
+        background-color: #ff69b4;
+    }
+
+    14% {
+        background-color: #ffb6c1;
+    }
+
+    28% {
+        background-color: #ffff00;
+    }
+
+    42% {
+        background-color: #7fff00;
+    }
+
+    57% {
+        background-color: #00ffff;
+    }
+
+    71% {
+        background-color: #1e90ff;
+    }
+
+    85% {
+        background-color: #ff1493;
+    }
+
+    100% {
+        background-color: #ff69b4;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+
+    button {
+        font-size: 0.95rem;
+    }
+
+    .card__curl {
+        width: 35px;
+        height: 35px;
+    }
+
+    .card__curl:hover {
+        width: 45px;
+        height: 45px;
+    }
+
+    #info div span {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    #info div button {
+        font-size: 1.3rem;
+    }
+}
+
+/* Laptops/Monitores */
+@media (min-width: 1024px) {
+
+    .card {
+        width: 30%;
+        height: 70%;
+        background: #ffffff;
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.25);
+        transition: 1s;
+        border-radius: 15px;
+    }
+
+    .front__box {
+        width: 50%;
+        z-index: 2;
+    }
+
+    #name {
+        font-size: 5rem;
+    }
+
+    #date {
+        font-size: 1.8rem;
+    }
+
+    #decoration img:last-child {
+        width: 45%;
+        bottom: 7%;
+        height: 70%;
+        left: 63%;
+    }
+
+    #decoration h1 {
+        top: 20%;
+        width: 90%;
+        font-size: 2.5rem;
+    }
+
+    #info div button {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+
+    *,
+    *:before,
+    *:after {
+        overflow: scroll;
+    }
+
+    body {
+        overflow-y: scroll;
+        height: 200vh;
+    }
+
+    .card {
+        position: relative;
+        height: 100%;
+    }
+
+    #decoration img:last-child {
+        width: 60%;
+        height: 70%;
+    }
+
+    #decoration h1 {
+        top: 20%;
+    }
+
+}
