@@ -447,7 +447,7 @@ input[type="checkbox"] {
     }
 
     #info div span {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
     }
 
@@ -476,11 +476,11 @@ input[type="checkbox"] {
     }
 
     #name {
-        font-size: 5rem;
+        font-size: 2.5rem;
     }
 
     #date {
-        font-size: 1.8rem;
+        font-size: 1rem;
     }
 
     #decoration img:last-child {
