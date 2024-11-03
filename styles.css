@@ -152,8 +152,8 @@ input[type="checkbox"] {
 }
 
 .card__curl {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -174,8 +174,8 @@ input[type="checkbox"] {
 }
 
 .card__curl:hover {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
 }
 
 .card.open .front__cover {

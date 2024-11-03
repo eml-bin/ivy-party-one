@@ -105,8 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     guestConfirmations.forEach((invitado, index) => {
 
-                        const itemId = `checkbox-${index}`;
-                        
+
                         if (pastelColorsCopy.length === 0) {
                             pastelColorsCopy = [...pastelColors];
                         }
@@ -115,16 +114,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         const color = pastelColorsCopy.splice(randomIndex, 1)[0];
 
+                        const itemId = `checkbox-${index}`;
+
                         guestList += `
-                        <li style="background-color: ${color}" onclick="handleCheckboxChange('${invitado.name}', !document.getElementById('${itemId}').checked)">
-                          <label for="${itemId}" style="cursor: pointer;">
-                            <input type="checkbox" 
-                                   id="${itemId}"
-                                   onchange="handleCheckboxChange('${invitado.name}', this.checked)"
-                                   ${invitado.confirmation ? 'checked' : ''}>
-                            ${invitado.name}
-                          </label>
-                        </li>`;
+                            <li style="background-color: ${color}" onclick="
+                                if (event.target.tagName !== 'INPUT') {
+                                const checkbox = document.getElementById('${itemId}');
+                                checkbox.checked = !checkbox.checked;
+                                handleCheckboxChange('${invitado.name}', checkbox.checked);
+                                }
+                            ">
+                                <input type="checkbox" 
+                                        id="${itemId}"
+                                        onchange="handleCheckboxChange('${invitado.name}', this.checked)"
+                                        ${invitado.confirmation ? 'checked' : ''}>
+                                ${invitado.name}
+                            </li>`;
                     });
 
                     guestList += "</ul>";
