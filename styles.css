@@ -462,17 +462,10 @@ input[type="checkbox"] {
     .card {
         width: 30%;
         height: 90%;
-        background: #ffffff;
-        transform-style: preserve-3d;
-        transform: perspective(1000px);
-        box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.25);
-        transition: 1s;
-        border-radius: 15px;
     }
 
     .front__box {
         width: 50%;
-        z-index: 2;
     }
 
     #name {
@@ -507,6 +500,55 @@ input[type="checkbox"] {
         margin-bottom: 0.5rem;
     }
 
+}
+
+@media (min-width: 1200px) {
+    /* Reglas para pantallas de tamaño grande, como laptops grandes */
+    .card {
+        width: 35%;
+        height: 80%;
+    }
+
+    .central__figure {
+        width: 300px;
+        height: 300px;
+    }
+
+    .front__box {
+        width: 50%;
+    }
+
+    #name {
+        font-size: 5rem;
+    }
+
+    #date {
+        font-size: 2rem;
+    }
+
+    #decoration img:last-child {
+        width: 50%;
+        bottom: 3%;
+        height: 65%;
+        left: 63%;
+    }
+
+    #decoration h1 {
+        top: 22%;
+        width: 90%;
+        font-size: 2.5rem;
+        margin-bottom: 5%;
+    }
+
+
+    #info div button {
+        font-size: 1.5rem;
+    }
+
+    #info div span {
+        font-size: 4rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
