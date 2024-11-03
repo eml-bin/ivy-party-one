@@ -10,26 +10,26 @@ function goBack() {
 
 async function handleCheckboxChange(name, isChecked) {
 
-    
+
     const guest = guestConfirmations.find(item => item.name === name)
-    
+
     if (!guest) {
         alert("Vuelve a intentarlo...");
         window.location.reload();
     }
 
     guest.confirmation = isChecked;
-    
+
     const data = { confirmations: guestConfirmations }
 
     document.getElementById("loader").style.display = "flex";
-    
+
     fetch(`https://us-central1-ivy-party.cloudfunctions.net/api/guests/${guestCode}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
-        } 
+        }
     })
         .then(response => {
 
@@ -103,8 +103,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     guestConfirmations = data
 
-                    guestConfirmations.forEach(invitado => {
+                    guestConfirmations.forEach((invitado, index) => {
 
+                        const itemId = `checkbox-${index}`;
+                        
                         if (pastelColorsCopy.length === 0) {
                             pastelColorsCopy = [...pastelColors];
                         }
@@ -113,13 +115,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         const color = pastelColorsCopy.splice(randomIndex, 1)[0];
 
-                        guestList += `<li style="background-color: ${color}"><input type="checkbox" onchange="handleCheckboxChange('${invitado.name}', this.checked)" ${invitado.confirmation ? 'checked' : ''}> ${invitado.name}</li>`;
+                        guestList += `
+                        <li style="background-color: ${color}" onclick="handleCheckboxChange('${invitado.name}', !document.getElementById('${itemId}').checked)">
+                          <label for="${itemId}" style="cursor: pointer;">
+                            <input type="checkbox" 
+                                   id="${itemId}"
+                                   onchange="handleCheckboxChange('${invitado.name}', this.checked)"
+                                   ${invitado.confirmation ? 'checked' : ''}>
+                            ${invitado.name}
+                          </label>
+                        </li>`;
                     });
 
                     guestList += "</ul>";
                     guestList += '<button class="rainbow" onclick="goBack()">Confirmar</button>';
 
-                    
+
                     confirmationBox.innerHTML = guestList;
 
                 })
